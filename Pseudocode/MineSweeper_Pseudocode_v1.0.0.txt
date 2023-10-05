@@ -1,0 +1,94 @@
+// MineSweeper PseudoCode
+//
+// Requirements:
+//  - Parallel Array
+//  - Nested loop
+//  - At least one function
+//
+// This is just an initial version. Just the bare minimum to run minesweeper 
+//
+// The goal should be to make this as simple as possible. Trust me, this will already be complicated enough
+//
+// Program execution:
+//  - Begin with dialog box("Start New Game" or "Quit")
+//  - If Bomb is touched or all flags are correctly flagged, Show dialog window with corresponding message ("Game Over" or "You Won")
+//  - repeat to the top with dialog to start new round
+
+start
+  constants:
+    // game dimensions:
+    MINESWEEPER_BLOCKS_X = 8
+    MINESWEEPER_BLOCKS_Y = 8
+
+    NUM_OF_MINESWEEPER_BLOCKS = MINESWEEPER_BLOCKS_X * MINESWEEPER_BLOCKS_Y
+
+    // TODO: Weight constants for setting bombs
+
+
+  declarations:
+    isDonePlaying = false // << is this needed? 
+
+    // keep these array's as single dimension. It will be ordered from left-right top-down:
+    MineSweeperBlocks[NUM_OF_MINESWEEPER_BLOCKS]  // int type array (-1 = bomb block, 0 = empty block, 1-5 etc. = number assigned block)
+    PlayedMineSweeperBlocks[NUM_OF_MINESWEEPER_BLOCKS]  // enum type (0 = not played, 1 = played, 2 = flagged)
+    isRoundDone = false
+    
+
+  while isDonePlaying == false
+    isDonePlaying = PromptNewGame() // TODO: Prompt user with dialog window for a new game (Blocking Function. Waits until user responds. returns result)
+    StartGame()
+    renderBlocks() // TODO! "renderBlocks()" render new blocks unto the screen
+
+    // Once round is done, prompt user to exit or start new round
+    while isRoundDone == false
+    // TODO: run background tasks. Timer? Rendering(if necessary)?
+      if user Input Event then
+        if right Clicked then
+          PlayedMineSweeperBlocks[BlockIndex(mouseX, mouseY)] = 1 // << Play block.  //TODO! "BlockIndex()" locate block index corresponding to cursor coordinates
+          // TODO. check empty blocks surrounding newly played block if NOT a bomb. Reveal empty blocks
+          //  - implement perimeter search? 
+          //  SOLUTION:
+          //   - Run ONLY if empty block has been uncovered
+          //   - Uncover all adjacent blocks and repeat until no empty adjacent blocks left
+        else if left Clicked then
+          // place flag
+          PlayedMineSweeperBlocks[BlockIndex(mouseX, mouseY)] = 2  // << Flag block.  //TODO! "BlockIndex()" locate block index corresponding to cursor coordinates
+        endif
+
+        renderBlocks() // TODO! "renderBlocks()" render new blocks unto the screen
+
+        // TODO: check if game-over or game-won:
+        //  - run through all blocks and see if a single bomb block was played OR if all flags were correctly set on bombs
+        //  - Render dialog box.
+      endif
+    endWhile
+  endWhile
+
+  // TODO: run exit procedures
+stop
+
+
+StartGame():
+  for x in range(0, NUM_OF_MINESWEEPER_BLOCKS)
+    MineSweeperBlocks[x] = 0; // make all blocks empty 
+    PlayedMineSweeperBlocks[x] = false; // make all blocks "not-played"
+  endFor
+
+  PlaceBombs() // TODO! "PlaceBombs()" need to implement random placement of bombs with adjustable weights. Modifies 'MineSweeperBlocks' array
+  SetBlockNums() // sets numbers around bombs 
+
+  return null
+
+SetBlockNums():
+  for x in range(0, NUM_OF_MINESWEEPER_BLOCKS)
+    if  MineSweeperBlocks[x] == -1 // << find all bomb blocks
+      // TODO:
+      // run algorithm to set numbers around bomb block
+      // steps required:
+      //  - find bomb
+      //  - find adjacent blocks and increment all by '1' ONLY if empty block
+      //  - repeat until no bombs left
+    endif
+  endFor
+  
+  return null
