@@ -100,7 +100,7 @@ SetBlockNums():
 
 // AdjacentSearch():
 //   Input orgin block index and block code
-//   Block code can have one of 8 values(because a block can only have 8 adjacent blocks)
+//   Block code can have one of 8 values(because a block can only have 8 adjacent blocks):
 //     O O O
 //     O 0 O
 //     O O O
