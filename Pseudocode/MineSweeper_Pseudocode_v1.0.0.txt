@@ -97,3 +97,17 @@ SetBlockNums():
   endFor
   
   return null
+
+// PerimeterBlockSearch():
+//    input the origin block index
+//    Function should find and reveal all possible blocks around the origin block
+//    Function will simply return when task is complete
+//   
+//    Function should folow these steps when uncovering blocks:
+//     - Run ONLY if empty block has been uncovered
+//     - Uncover all adjacent blocks
+//     - For each empty adjacent block found, repeat until no empty adjacent blocks left
+//  Refer to the Adjacent-Search Branch on how to use the function
+//  returns null
+PerimeterBlockSearch(originBlockIndex):
+  return null
