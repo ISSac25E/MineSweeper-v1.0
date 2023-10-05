@@ -13,6 +13,11 @@
 //  - Begin with dialog box("Start New Game" or "Quit")
 //  - If Bomb is touched or all flags are correctly flagged, Show dialog window with corresponding message ("Game Over" or "You Won")
 //  - repeat to the top with dialog to start new round
+//
+// TODO: Need to Split Work evenly
+//  - Perimeter Search
+//  - Adjacent Seach
+//  - Graphic Render
 
 start
   constants:
