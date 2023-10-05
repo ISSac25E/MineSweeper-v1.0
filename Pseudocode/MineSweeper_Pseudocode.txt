@@ -108,6 +108,10 @@ SetBlockNums():
 //     - Uncover all adjacent blocks
 //     - For each empty adjacent block found, repeat until no empty adjacent blocks left
 //  Refer to the Adjacent-Search Branch on how to use the function
-//  returns null
+//
+//  Use 'MINESWEEPER_BLOCKS_X' and 'MINESWEEPER_BLOCKS_X' to find the bounds to the game
+//  To identify the type of block, use 'MineSweeperBlocks' (^^ refer to docs ^^)
+//  If a valid block has been found to be uncovered, use 'PlayedMineSweeperBlocks' to uncover(^^ refer to docs ^^)
+//  returns nothing
 PerimeterBlockSearch(originBlockIndex):
   return null
